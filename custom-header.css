@@ -1,0 +1,162 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  font-family: Poppins;
+}
+
+.site-header {
+  padding: 0;
+  margin: 0;
+  background-color: #000;
+}
+
+.header-wrapper {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px 20px;
+  background: transparent;
+  position: relative;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.logo img {
+  max-width: 60px;
+}
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+
+.menu li {
+  display: inline;
+}
+
+.menu-item {
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  font-family: poppins;
+  font-weight: 600;
+  padding: 5px 15px;
+  position: relative;
+}
+
+svg.icon-plus {
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translate(0px, -50%);
+    margin-right: 10px;
+    font-weight: 800;
+}
+
+
+.menu-item:hover {
+  opacity: 0.8;
+}
+
+.megamenu {
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  font-family: poppins;
+  font-weight: 600;
+  padding: 10px 15px;
+}
+
+svg.down-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translate( 0%, -50%);
+    margin-left: 5px;
+}
+
+.megamenu:hover {
+  opacity: 0.8;
+}
+
+.megamenu-item-wrapper{
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 70px;
+  background: rgb(241, 241, 241);
+  margin-top: 20px;
+  display: none;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 30px 0px;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
+  z-index: 999999;
+  transition: linear 0.3s;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+.megamenu-item {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: linear 0.4s;
+}
+
+.megamenu-item:hover{
+  background: #000;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  color:#fff;
+}
+
+.megamenu-item:hover .megamenu-link{
+  color:#fff;
+}
+
+.megamenu-image {
+  max-width: 300px;
+}
+
+.megamenu-item:hover .megamenu-image{
+ opacity: 0.8;
+}
+
+.megamenu-item-content {
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.megamenu-link {
+  font-size: 22px;
+  line-height: 26px;
+  font-weight: 600;
+  color: #000;
+  padding: 0px 30px;
+}
+
+
+.header-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.header-right-icon {
+  width: 20px;
+  /* background-color: #ffffff; */
+  padding: 10px 12px;
+  border-radius: 100%;
+  color: #fff;
+}
