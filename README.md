@@ -7,5 +7,5 @@
          {{ 'custom-footer.css' | asset_url |  stylesheet_tag }}
 
 
-#Shopify Store link with Password: 
+# Shopify Store link with Password: 
 https://clickonline-us.myshopify.com/(demo)
