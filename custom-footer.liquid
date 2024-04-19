@@ -1,0 +1,236 @@
+<footer class="custom-footer">
+
+  <div class="footer-wrapper">
+    <div class="footer-content-wrapper">
+      <div class="footer-header">
+        <h2>{{ section.settings.footer_title }}</h2>
+        <p>
+         {{ section.settings.footer_content }}
+        </p>
+      </div>
+
+      <div class="footer-row">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'about' %}
+              <div class="footer-column footer-about">
+                <div class="footer-col-content">
+                  <div class="footer-about-content">
+                    <img class="footer-logo" src="{{ block.settings.footer_logo |img_url :'master' }}" alt="">
+                    <h2>{{ block.settings.about_title }}</h2>
+                    <p>
+                      {{ block.settings.about_content }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+            {% when 'menu' %}
+              <div class="footer-column">
+                <div class="footer-col-heading">
+                  <h3>{{ block.settings.footer_menu_heading }}</h3>
+                </div>
+                <div class="footer-col-content">
+                  <ul>
+                    {% for link in block.settings.footer_menu.links %}
+                      <li>
+                        <a href="{{ link.url }}">{{ link.title }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+
+            {% when 'signup' %}
+              <div class="footer-column signup">
+                <div class="footer-col-heading">
+                  <h3>{{ block.settings.footer_signup_title }}</h3>
+                  <p>{{ block.settings.footer_signup_text }}</p>
+                </div>
+                <div class="footer-col-content">
+                  <div class="footer-form">
+                    {% form 'customer' %}
+                      <input type="text" name="contact[email]" id="email" placeholder="Your email">
+                      <button type="submit">{{ block.settings.signup_btn_text }}</button>
+                    {% endform %}
+                  </div>
+                </div>
+              </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
+
+      {% if section.settings.show_social %}
+      <div class="footer-social">
+        {% if section.settings.facebook != blank %}
+        <a class="footer-social-link" href="{{ section.settings.facebook }}" target="_blank">{% render 'icon-fb-white' %}</a>
+        {% endif %}
+
+        {% if section.settings.instagram != blank %}
+        <a class="footer-social-link" href="{{ section.settings.instagram }}"  target="_blank">{% render 'icon-insta-white' %}</a>
+        {% endif %}
+
+        {% if section.settings.twitter %}
+        <a class="footer-social-link" href="{{ section.settings.twitter }}"  target="_blank">{% render 'icon-twitter-white' %}</a>
+        {% endif %}
+
+        {% if section.settings.tiktok %}        
+        <a class="footer-social-link" href="{{ section.settings.tiktok }}"  target="_blank">{% render 'icon-tiktok-white' %}</a>
+        {% endif %}
+      </div>
+      {% endif %}
+      
+    </div>
+  </div>
+  
+</footer>
+
+{% schema %}
+{
+  "name": "Custom Footer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Footer Heading & content"
+    },
+    {
+      "type": "text",
+      "id": "footer_title",
+      "default":"Thanks for visiting our site",
+      "label": "Footer Title"
+    },
+    {
+      "type": "textarea",
+      "id": "footer_content",
+      "default":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores repellat, voluptatum nostrum aspernatur laborum neque necessitatibus voluptatem reprehenderit enim libero?",
+      "label": "Footer content"
+    },
+    {
+      "type": "header",
+      "content": "Footer Social links"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "default": false,
+      "label": "Show Footer Social"
+    },
+    {
+      "type": "url",
+      "id": "facebook",
+      "label": "Facebook",
+      "info": "https://facebook.com/shopify"
+    },
+    {
+      "type": "url",
+      "id": "instagram",
+      "label": "Instagram",
+      "info": "https://instagram.com/shopify"
+    },
+    {
+      "type": "url",
+      "id": "twitter",
+      "label": "Twitter",
+      "info": "https://twitter.com/shopify"
+    },
+    {
+      "type": "url",
+      "id": "tiktok",
+      "label": "Tiktok",
+      "info": "https://tiktok.com/shopify"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "about",
+      "name": "About Us",
+      "settings": [
+        {
+          "type": "header",
+          "content": "About Us Settings"
+        },
+        {
+          "type": "image_picker",
+          "id": "footer_logo",
+          "label": "Footer Logo"
+        },
+        {
+          "type": "text",
+          "id": "about_title",
+          "default":"About Us",
+          "label": "About heading"
+        },
+        {
+          "type": "textarea",
+          "id": "about_content",
+          "default":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta perferendis laborum suscipit unde perspiciatis, aut, pariatur sed rerum facere praesentium asperiores reiciendis rem dignissimos voluptatum consequuntur repellat nostrum reprehenderit. Voluptate?",
+          "label": "About content"
+        }
+      ]
+    },
+    {
+      "type": "menu",
+      "name": "Footer menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "footer_menu_heading",
+          "label": "Footer Menu Heading",
+          "default": "Quick Links"
+        },
+        {
+          "type": "link_list",
+          "id": "footer_menu",
+          "label": "Footer menu"
+        }
+      ]
+    },
+    {
+      "type": "signup",
+      "name": "Footer newslatter",
+      "settings": [
+        {
+          "type": "text",
+          "id": "footer_signup_title",
+          "label": "Footer Sign Up Title",
+          "default": "Sign Up for updates"
+        },
+        {
+          "type": "textarea",
+          "id": "footer_signup_text",
+          "label": "Footer Sign Up Content",
+          "default": "SLorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, totam."
+        },
+        {
+          "type": "text",
+          "id": "signup_btn_text",
+          "label": "Signup Button Text",
+          "default": "Sign up"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Footer"
+    },
+    {
+      "name": "block",
+      "blocks": [
+        {
+          "type": "about"
+        },
+        {
+          "type": "menu"
+        },
+        {
+          "type": "menu"
+        },
+        {
+          "type": "signup"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
